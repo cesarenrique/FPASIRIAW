@@ -17,7 +17,7 @@
                                    $i=0;
                                     foreach ($usuarios as $opcion) {
 
-                                        echo "<option value='{$opcion->id}'>{$opcion->NOMBRE}</option>";
+                                        echo "<option value='{$opcion->id}'>{$opcion->NOMBRE}  {$opcion->APELLIDO}</option>";
                                         $i++;
                                     }
                                 ?>
