@@ -22,8 +22,5 @@ class Usuario extends Model
     {
         return $this->hasMany(Usuario::class,'USUARIO');
     }
-    public function ejemplares()
-    {
-       return $this->belongsToMany(Ejemplar::class,'PRESTAR','ID_USUARIO','ID_EJEMPLAR')->withPivot(['FECHA_PRESTAMO','FECHA_DEVOLUCION']); // autor_id ariiculo_id
-    }
+
 }

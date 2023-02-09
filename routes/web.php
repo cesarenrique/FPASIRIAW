@@ -6,13 +6,9 @@ use App\Http\Controllers\LocalidadController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\LocalidadUsuarioController;
 use App\Http\Controllers\CrearController;
-use App\Http\Controllers\PaisController;
-use App\Http\Controllers\ProvinciaController;
 use App\Http\Controllers\EditorialController;
 use App\Http\Controllers\TipoController;
 use App\Http\Controllers\ArticuloController;
-use App\Http\Controllers\EjemplarController;
-use App\Http\Controllers\PrestarController;
 use App\Http\Controllers\MultaController;
 /*
 |--------------------------------------------------------------------------
@@ -37,13 +33,6 @@ Route::post('/multa/modificarForm', [MultaController::class, 'modificarForm' ])-
 Route::post('/multa/modificar', [MultaController::class, 'modificar' ])->middleware('auth')->name('multa.modificar');
 Route::get('/multa/borrar/{id}', [MultaController::class, 'borrar' ])->middleware('auth')->name('multa.borrar');
 
-Route::get('/ejemplar/registrar', [EjemplarController::class, 'registrarForm' ])->middleware('auth')->name('ejemplar.registrarForm');
-Route::post('/ejemplar/registrar', [EjemplarController::class, 'registrar' ])->middleware('auth')->name('ejemplar.registrar');
-Route::get('/ejemplar/listar', [EjemplarController::class, 'listar' ])->middleware('auth')->name('ejemplar.listar');
-Route::post('/ejemplar/modificarForm', [EjemplarController::class, 'modificarForm' ])->middleware('auth')->name('ejemplar.modificarForm');
-Route::post('/ejemplar/modificar', [EjemplarController::class, 'modificar' ])->middleware('auth')->name('ejemplar.modificar');
-Route::get('/ejemplar/borrar/{id}', [EjemplarController::class, 'borrar' ])->middleware('auth')->name('ejemplar.borrar');
-
 
 Route::get('/autor/registrar', [AutorController::class, 'registrarForm' ])->middleware('auth')->name('autor.registrarForm');
 Route::post('/autor/registrar', [AutorController::class, 'registrar' ])->middleware('auth')->name('autor.registrar');
@@ -66,19 +55,6 @@ Route::post('/usuario/modificarForm', [UsuarioController::class, 'modificarForm'
 Route::post('/usuario/modificar', [UsuarioController::class, 'modificar' ])->middleware('auth')->name('usuario.modificar');
 Route::get('/usuario/borrar/{id}', [UsuarioController::class, 'borrar' ])->middleware('auth')->name('usuario.borrar');
 
-Route::get('/pais/registrar', [PaisController::class, 'registrarForm' ])->middleware('auth')->name('pais.registrarForm');
-Route::post('/pais/registrar', [PaisController::class, 'registrar' ])->middleware('auth')->name('pais.registrar');
-Route::get('/pais/listar', [PaisController::class, 'listar' ])->middleware('auth')->name('pais.listar');
-Route::post('/pais/modificarForm', [PaisController::class, 'modificarForm' ])->middleware('auth')->name('pais.modificarForm');
-Route::post('/pais/modificar', [PaisController::class, 'modificar' ])->middleware('auth')->name('pais.modificar');
-Route::get('/pais/borrar/{id}', [PaisController::class, 'borrar' ])->middleware('auth')->name('pais.borrar');
-
-Route::get('/provincia/registrar', [ProvinciaController::class, 'registrarForm' ])->middleware('auth')->name('provincia.registrarForm');
-Route::post('/provincia/registrar', [ProvinciaController::class, 'registrar' ])->middleware('auth')->name('provincia.registrar');
-Route::get('/provincia/listar', [ProvinciaController::class, 'listar' ])->middleware('auth')->name('provincia.listar');
-Route::post('/provincia/modificarForm', [ProvinciaController::class, 'modificarForm' ])->middleware('auth')->name('provincia.modificarForm');
-Route::post('/provincia/modificar', [ProvinciaController::class, 'modificar' ])->middleware('auth')->name('provincia.modificar');
-Route::get('/provincia/borrar/{id}', [ProvinciaController::class, 'borrar' ])->middleware('auth')->name('provincia.borrar');
 
 Route::get('/editorial', [EditorialController::class,'listaeditorial'])
          ->middleware('auth')->name('listaeditorial');
@@ -150,12 +126,6 @@ Route::post('/autor/seleccionado/articulo',[CrearController::class,'seleccionado
 Route::post('/autor/seleccionado/articulo/agregar',[CrearController::class,'registrar'])->middleware('auth')->name('autor.articulo.registrar');
 Route::get('/autor/{autor}/articulo/{articulo}/borrar',[CrearController::class,'borrar'])->middleware('auth')->name('autor.articulo.borrar');
 Route::get('/autor/{autor}/articulo/{articulo}',[CrearController::class,'articuloPorAutor'])->middleware('auth')->name('autor.articulo.show');
-
-Route::get('/usuario/seleccionar/ejemplar',[PrestarController::class,'seleccionar'])->middleware('auth')->name('usuario.ejemplar.seleccionar');
-Route::post('/usuario/seleccionado/ejemplar',[PrestarController::class,'seleccionado'])->middleware('auth')->name('usuario.ejemplar.seleccionado');
-Route::post('/usuario/seleccionado/ejemplar/agregar',[PrestarController::class,'registrar'])->middleware('auth')->name('usuario.ejemplarejemplar.registrar');
-Route::get('/usuario/{usuario}/ejemplar/{ejemplar}/borrar',[PrestarController::class,'borrar'])->middleware('auth')->name('usuario.ejemplar.borrar');
-Route::get('/usuario/{usuario}/ejemplar/{ejemplar}',[PrestarController::class,'articuloPorAutor'])->middleware('auth')->name('usuario.ejemplar.show');
 
 
 use App\Http\Controllers\DashboardController;
