@@ -20,6 +20,7 @@ class LocalidadUsuarioController extends Controller
 
   public function seleccionado(Request $request){
     $id=$request->localidad;
+    $localidad=Localidad::findOrFail($id);
     $url="/localidad/$id/usuario/listar";
     return redirect($url);
   }
@@ -28,7 +29,7 @@ class LocalidadUsuarioController extends Controller
       $id2=intval($id);
       $todos=Localidad::findOrFail($id2)->usuarios;
       $localidades=Localidad::orderBy('NOMBRE')->get();
-      return view('localidadUsuario/localidadUsuarioListar')->with('todos',$todos)->with('localidades',$localidades);
+      return view('localidadUsuario/localidadUsuarioListar')->with('localidad',$localidad)->with('todos',$todos)->with('localidades',$localidades);
 
   }
 }
