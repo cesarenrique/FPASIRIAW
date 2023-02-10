@@ -29,7 +29,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+/** mis rutas cojojnudas */
 Route::get('/multa/registrar', [MultaController::class, 'registrarForm' ])->name('multa.registrarForm');
 Route::post('/multa/registrar', [MultaController::class, 'registrar' ])->name('multa.registrar');
 Route::get('/multa/listar', [MultaController::class, 'listar' ])->name('multa.listar');
