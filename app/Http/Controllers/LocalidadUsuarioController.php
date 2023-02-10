@@ -30,7 +30,7 @@ class LocalidadUsuarioController extends Controller
       $localidad=Localidad::findOrFail($id2);
       $todos=Localidad::findOrFail($id2)->usuarios;
       $localidades=Localidad::orderBy('NOMBRE')->get();
-      return view('localidadUsuario/localidadUsuarioListar')->with('localidad',$localidad)->with('todos',$todos)->with('localidades',$localidades);
+      return view('localidadUsuario/localidadUsuarioListar')->with('localidad2',$localidad)->with('todos',$todos)->with('localidades',$localidades);
 
   }
 }
