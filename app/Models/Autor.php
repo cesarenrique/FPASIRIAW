@@ -15,6 +15,6 @@ class Autor extends Model
 
     public function articulos()
     {
-       return $this->belongsToMany('App\Models\Articulo','CREAR','ID_AUTOR','ID_ARTICULO'); // autor_id ariiculo_id
+       return $this->belongsToMany('App\Models\Articulo','crear','ID_AUTOR','ID_ARTICULO'); // autor_id ariiculo_id
     }
 }

@@ -13,7 +13,7 @@ class Articulo extends Model
      protected $fillable=['ISBN','DESCRIPCION','NOMBRE','IDIOMA','ID_TIPO','ID_EDITORIAL'];
      public $timestamps = false;
      public function autores(){
-        return $this->belongsToMany('App\Models\Autor','CREAR','ID_ARTICULO','ID_AUTOR'); // autor_id ariiculo_id
+        return $this->belongsToMany('App\Models\Autor','crear','ID_ARTICULO','ID_AUTOR'); // autor_id ariiculo_id
      }
 
      public function editorial(){
