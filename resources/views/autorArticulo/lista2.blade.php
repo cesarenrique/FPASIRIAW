@@ -1,8 +1,8 @@
 <x-layout bodyClass="g-sidenav-show  bg-gray-200">
-        <x-navbars.sidebar activePage="tables"></x-navbars.sidebar>
+        <x-navbars.sidebar activePage="tables-autoria"></x-navbars.sidebar>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
             <!-- Navbar -->
-            <x-navbars.navs.auth titlePage="Tables"></x-navbars.navs.auth>
+            <x-navbars.navs.auth titlePage="Articulos por Autor"></x-navbars.navs.auth>
             <!-- End Navbar -->
             <div class="container-fluid py-4">
 
@@ -12,29 +12,29 @@
                         <div class="card my-4">
                           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                  <h6 class="text-white text-capitalize ps-3">Articulos</h6>
+                                  <h6 class="text-white text-capitalize ps-3">Articulos por Autor</h6>
                               </div>
                           </div>
-                          <div class="card-body px-0 pb-4">
-                            <div class="contenedor-01">
+                          <div class="card-body px-0 ">
+                            <div class="contenedor-01 pb-4">
                                 <div class="contenedor-form">
                                     <form action="<?php echo url('/autor/seleccionado/articulo/agregar'); ?>" method="POST">
                                         <input type="hidden" name="_token" value="<?php echo  csrf_token(); ?>">
                                         <input type="number" name="autor" value="<?php echo $autor->id; ?>" hidden>
-                                        <div class="form-group">
-                                            <label for="articulo">Articulo</label><br />
+                                        <div class="form-group my-4">
+                                            <label for="articulo" class="text-dark font-weight-bold h6">Autor</label><br />
                                             <select name="articulo" id="articulo" style="width:100%;">
                                                 <?php
                                                    $i=0;
                                                     foreach ($articulos2 as $opcion) {
 
-                                                        echo "<option value='{$opcion->id}'>{$opcion->NOMBRE}</option>";
+                                                        echo "<option value='{$opcion->id}'>{$opcion->NOMBRE} {$opcion->APELLIDO}</option>";
                                                         $i++;
                                                     }
                                                 ?>
                                             </select>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Registrar</button>
+                                        <button type="submit" class="btn btn-primary my-4">Vincular</button>
                                     </form>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                         <div class="card my-4">
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                    <h6 class="text-white text-capitalize ps-3">Articulos</h6>
+                                    <a href="<?php echo url("/autor")."/".$autor->id;?>"><h6 class="text-white text-capitalize ps-3">Autor: {{$autor->NOMBRE}} {{$autor->APELLIDO}}</h6></a>
                                 </div>
                             </div>
                             <div class="card-body px-0 pb-2">
@@ -150,16 +150,12 @@
                                                 </td>
                                                     <td class="align-middle">
 
-                                                       <a href="<?php echo url('/autor/'.$autor->id.'/articulo/'.$tipoarticulo->id.'/borrar')?>">Eliminar Autor </a>
+                                                       <a href="<?php echo url('/autor/'.$autor->id.'/articulo/'.$tipoarticulo->id.'/borrar')?>">Eliminar Articulo </a>
                                                   </td>
 
                                             </tr>
 
                                                  @endforeach
-
-
-
-
 
                                         </tbody>
                                     </table>

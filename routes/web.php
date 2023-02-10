@@ -137,6 +137,7 @@ Route::post('/autor/seleccionado/articulo/agregar',[CrearController::class,'regi
 Route::get('/autor/{autor}/articulo/{articulo}/borrar',[CrearController::class,'borrar'])->middleware('auth')->name('autor.articulo.borrar');
 Route::get('/autor/{autor}/articulo/{articulo}',[CrearController::class,'articuloPorAutor'])->middleware('auth')->name('autor.articulo.show');
 
+Route::get('/inicio',[DashboardController::class,'index'])->middleware('auth')->name('inicio');
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;

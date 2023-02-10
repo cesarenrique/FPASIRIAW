@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class CrearController extends Controller
 {
   public function seleccionar(Request $request){
-      $autores=DB::table('AUTOR')->orderBy('NOMBRE')->get();
+      $autores=Autor::orderBy('NOMBRE')->get();
       return view('autorArticulo/AutorArticuloSeleccionar')->with('autores',$autores);
   }
 
@@ -19,7 +19,7 @@ class CrearController extends Controller
       $articulos= $autor->articulos;
       $articulosExcluidos= $articulos;
       $todos=[];
-      $articulos2=DB::table('ARTICULO')->orderBy('NOMBRE')->get();
+      $articulos2=Articulo::orderBy('NOMBRE')->get();
       foreach ($articulos2 as $fila){
           $encontrado=false;
           foreach($articulosExcluidos as $fila2){
@@ -42,7 +42,7 @@ class CrearController extends Controller
       $articulos= $autor->articulos;
       $articulosExcluidos= $articulos;
       $todos=[];
-      $articulos2=DB::table('ARTICULO')->orderBy('NOMBRE')->get();
+      $articulos2=Articulo::orderBy('NOMBRE')->get();
       foreach ($articulos2 as $fila){
           $encontrado=false;
           foreach($articulosExcluidos as $fila2){
@@ -73,7 +73,7 @@ class CrearController extends Controller
       $articulos= $autor2->articulos;
       $articulosExcluidos= $articulos;
       $todos=[];
-      $articulos2=DB::table('ARTICULO')->orderBy('NOMBRE')->get();
+      $articulos2=Articulo::orderBy('NOMBRE')->get();
       foreach ($articulos2 as $fila){
           $encontrado=false;
           foreach($articulosExcluidos as $fila2){
