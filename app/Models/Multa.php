@@ -9,7 +9,7 @@ class Multa extends Model
 {
     use HasFactory;
     use HasFactory;
-    protected $table = 'MULTA';
+    protected $table = 'multa';
     protected $fillable = ['id','DIA','USUARIO'];
     public $timestamps = false;
 

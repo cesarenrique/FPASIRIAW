@@ -10,7 +10,7 @@ class Localidad extends Model
 {
     use HasFactory;
 
-    protected $table = 'LOCALIDAD';
+    protected $table = 'localidad';
     protected $fillable = ['id','NOMBRE','CP','N_HABITANTE','ID_PROVINCIA'];
     public $timestamps = false;
 

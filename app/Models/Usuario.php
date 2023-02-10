@@ -10,7 +10,7 @@ use App\Models\Ejemplar;
 class Usuario extends Model
 {
     use HasFactory;
-    protected $table = 'USUARIO';
+    protected $table = 'usuario';
     protected $fillable = ['id','NOMBRE','APELLIDO','DNI','TELEFONO','ID_LOCALIDAD'];
     public $timestamps = false;
 
