@@ -22,7 +22,7 @@
                                         <input type="hidden" name="_token" value="<?php echo  csrf_token(); ?>">
                                         <input type="number" name="autor" value="<?php echo $autor->id; ?>" hidden>
                                         <div class="form-group my-4">
-                                            <label for="articulo" class="text-dark font-weight-bold h6">Autor</label><br />
+                                            <label for="articulo" class="text-dark font-weight-bold h6">Articulo</label><br />
                                             <select name="articulo" id="articulo" style="width:100%;">
                                                 <?php
                                                    $i=0;
@@ -115,7 +115,7 @@
                                                     <div class="d-flex px-2 py-1">
 
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm"> {{$tipoarticulo->IDIOMA}}}</h6>
+                                                            <h6 class="mb-0 text-sm"> {{$tipoarticulo->IDIOMA}}</h6>
 
                                                         </div>
                                                     </div>

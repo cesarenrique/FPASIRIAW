@@ -66,6 +66,7 @@
          background-color: white;
       }
     </style>
+    <link rel="stylesheet" href="{{ asset('css/styles.css')}}"/>
 </head>
 <body class="{{ $bodyClass }}">
 

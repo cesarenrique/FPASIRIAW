@@ -10,6 +10,10 @@ use App\Http\Controllers\EditorialController;
 use App\Http\Controllers\TipoController;
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\MultaController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -139,10 +143,7 @@ Route::get('/autor/{autor}/articulo/{articulo}',[CrearController::class,'articul
 
 Route::get('/inicio',[DashboardController::class,'index'])->middleware('auth')->name('inicio');
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SessionsController;
+
 
 
 Route::get('/', function () {return redirect('sign-in');})->middleware('guest');
