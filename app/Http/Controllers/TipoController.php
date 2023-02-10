@@ -56,7 +56,7 @@ class TipoController extends Controller
 
             //Creo la variable haciendo el select de la tabla
             //editorial
-            $tipo = Tipo::get(); //<-esto hace el select
+            $tipo = Tipo::All(); //<-esto hace el select
 
 
             //Indico primero el directorio que hay dentro
