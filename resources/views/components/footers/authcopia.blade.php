@@ -7,9 +7,10 @@
                         document.write(new Date().getFullYear())
 
                     </script>,
-                    hecho por
-                    <a href="#" class="font-weight-bold" target="_blank">Equipo Rojo</a> 
-
+                    made with <i class="fa fa-heart"></i> by
+                    <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a> &
+                    <a href="https://www.updivision.com" class="font-weight-bold" target="_blank"> UPDIVISION</a>
+                    for a better web.
                 </div>
             </div>
             <div class="col-lg-6">

@@ -31,6 +31,12 @@ class AutorController extends Controller
         return view('autor/autorListar')->with('todosAutores',$todosAutores);
     }
 
+    public function modificarId($id,Request $request){
+        $id2=intval($id);
+        $autor=Autor::findOrFail($id2);
+        return view('autor/autorModificarForm')->with('autor',$autor);
+    }
+    
     public function modificarForm(Request $request){
         $id=intval($request->id);
         $autor=Autor::findOrFail($id);
@@ -53,5 +59,11 @@ class AutorController extends Controller
         $autor=Autor::findOrFail($id2);
         $autor->delete();
         return redirect('/autor/listar');
+    }
+
+    public function showOne($id, Request $request){
+      $id2=intval($id);
+      $single=Autor::findOrFail($id2);
+      return view('/autor/autorShowOne')->with('single',$single);
     }
 }

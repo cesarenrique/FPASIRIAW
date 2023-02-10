@@ -1,29 +1,29 @@
 <x-layout bodyClass="g-sidenav-show  bg-gray-200">
-        <x-navbars.sidebar activePage="tables"></x-navbars.sidebar>
+        <x-navbars.sidebar activePage="tables-localidad"></x-navbars.sidebar>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
             <!-- Navbar -->
-            <x-navbars.navs.auth titlePage="Tables"></x-navbars.navs.auth>
+            <x-navbars.navs.auth titlePage="Registrar Loclalidad"></x-navbars.navs.auth>
             <!-- End Navbar -->
-            <div class="container-fluid py-4">
+            <div class="container-fluid ">
 
-              <div class="contenedor-01">
+              <div class="contenedor-01  py-4">
                   <div class="contenedor-form">
                       <form action="<?php echo url('/localidad/registrar'); ?>" method="POST">
                           <input type="hidden" name="_token" value="<?php echo  csrf_token(); ?>">
-                          <div class="form-group">
-                              <label for="nombre">Nombre</label>
+                          <div class="form-group my-4">
+                              <label for="nombre" class="text-dark font-weight-bold h6">Nombre</label>
                               <input type="text" class="form-control" name="nombre">
                           </div>
-                          <div class="form-group">
-                              <label for="cp">Codigo Postal</label>
+                          <div class="form-group my-4">
+                              <label for="cp" class="text-dark font-weight-bold h6">Codigo Postal</label>
                               <input type="text" class="form-control" name="cp">
                           </div>
-                          <div class="form-group">
-                              <label for="habitantes">Habitantes</label>
+                          <div class="form-group my-4">
+                              <label for="habitantes" class="text-dark font-weight-bold h6">Habitantes</label>
                               <input type="number" class="form-control" name="habitantes">
                           </div>
-                          <div class="form-group">
-                              <label for="provincia">Provincia</label><br />
+                          <div class="form-group my-4" class="text-dark font-weight-bold h6">
+                              <label for="provincia" class="text-dark font-weight-bold h6">Provincia</label><br />
                               <select name="provincia" id="provincia" style="width:100%;">
                                   <?php
                                      $i=0;
@@ -36,7 +36,7 @@
                               </select>
                           </div>
 
-                          <button type="submit" class="btn btn-primary">Registrar</button>
+                          <button type="submit" class="btn btn-primary my-4">Registrar</button>
                       </form>
                   </div>
               </div>

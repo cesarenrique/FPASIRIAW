@@ -1,8 +1,8 @@
 <x-layout bodyClass="g-sidenav-show  bg-gray-200">
-        <x-navbars.sidebar activePage="tables"></x-navbars.sidebar>
+        <x-navbars.sidebar activePage="tables-editorial"></x-navbars.sidebar>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
             <!-- Navbar -->
-            <x-navbars.navs.auth titlePage="Tables"></x-navbars.navs.auth>
+            <x-navbars.navs.auth titlePage="Editorial Tables"></x-navbars.navs.auth>
             <!-- End Navbar -->
             <div class="container-fluid py-4">
                 <div class="row">
@@ -10,7 +10,7 @@
                         <div class="card my-4">
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                    <h6 class="text-white text-capitalize ps-3">Editoriales</h6>
+                                      <h6 class="w-25 float-left text-white text-capitalize ps-3">Editoriales table  <a href="{{ route('editorial.muestraform') }}" class="text-white bg-dark py-3 px-3 mx-4 "><i class="fa fa-plus fa-2x px-2 align-middle" aria-hidden="true"></i>Registrar</a></h6>
                                 </div>
                             </div>
                             <div class="card-body px-0 pb-2">
@@ -33,7 +33,7 @@
                                                 <th
                                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Eliminar</th>
-                                                <th class="text-secondary opacity-7"></th>
+
                                             </tr>
                                         </thead>
                                         <tbody>

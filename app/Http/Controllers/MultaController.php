@@ -31,6 +31,23 @@ class MultaController extends Controller
         $todos=Multa::All();
         return view('multa/multaListar')->with('todos',$todos);
     }
+    public function modificarId($id,Request $request){
+        $id2=intval($id);
+        $single=Multa::findOrFail($id2);
+        $todos=Usuario::orderBy('NOMBRE')->get();
+        $selecionadas=[];
+        foreach ($todos as $fila) {
+          // code...
+
+          if($single->USUARIO == $fila->id){
+            $selecionadas[]=true;
+          }else{
+            $selecionadas[]=false;
+          }
+        }
+        return view('multa/multaModificarForm')->with('single',$single)
+          ->with('todos',$todos)->with('selecionadas',$selecionadas);;
+    }
 
     public function modificarForm(Request $request){
         $id=intval($request->id);
@@ -66,5 +83,11 @@ class MultaController extends Controller
         $autor=Multa::findOrFail($id2);
         $autor->delete();
         return redirect('/multa/listar');
+    }
+
+    public function showOne($id, Request $request){
+      $id2=intval($id);
+      $single=Multa::findOrFail($id2);
+      return view('multa/multaShowOne')->with('single',$single);
     }
 }

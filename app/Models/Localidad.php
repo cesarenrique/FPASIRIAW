@@ -17,4 +17,9 @@ class Localidad extends Model
     public function usuarios(){
        return $this->hasMany('App\Models\Usuario','ID_LOCALIDAD');
     }
+
+    public function provincia(){
+
+      return $this->belongsTo(Provincia::class,'ID_PROVINCIA');
+    }
 }

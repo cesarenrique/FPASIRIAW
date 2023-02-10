@@ -41,31 +41,19 @@ class LocalidadController extends Controller
     public function listar(Request $request){
 
         $todos=Localidad::All();
-        $provincias=[];
-        $paises=[];
-        foreach ($todos as $fila) {
-          // code...
-          $provincia=Provincia::where('id',$fila['ID_PROVINCIA'])->firstOrFail();
-          $provincias[]=$provincia->NOMBRE;
-          $pais=Pais::where('id',$provincia['ID_PAIS'])->firstOrFail();
-          $paises[]=$pais->NOMBRE;
-        }
-
-        return view('localidad/Localidadlistar')->with('todos',$todos)->with('provincias',$provincias)
-        ->with('paises',$paises);
+        return view('localidad/Localidadlistar')->with('todos',$todos);
     }
 
-    public function modificarForm(Request $request){
-        $id=intval($request->id);
+    public function modificarId($id,Request $request){
+        $id2=intval($id);
         $localidad=Localidad::findOrFail($id);
-        $provincias=DB::table('PROVINCIA')->orderBy('NOMBRE')->get();
+        $provincias=Provincia::orderBy('NOMBRE')->get();
 
-        $paises=[];
+
         $selecionadas=[];
         foreach ($provincias as $fila) {
           // code...
-          $pais=Pais::where('id',$fila->ID_PAIS)->firstOrFail();
-          $paises[]=$pais->NOMBRE;
+
 
           if($localidad->ID_PROVINCIA == $fila->id){
             $selecionadas[]=true;
@@ -74,7 +62,27 @@ class LocalidadController extends Controller
           }
         }
         return view('localidad/localidadModificarForm')->with('localidad',$localidad) ->with('provincias',$provincias)
-        ->with('paises',$paises)->with('selecionadas',$selecionadas);
+        ->with('selecionadas',$selecionadas);
+    }
+
+    public function modificarForm(Request $request){
+        $id=intval($request->id);
+        $localidad=Localidad::findOrFail($id);
+        $provincias=Provincia::orderBy('NOMBRE')->get();
+
+
+        $selecionadas=[];
+        foreach ($provincias as $fila) {
+          // code...
+
+          if($localidad->ID_PROVINCIA == $fila->id){
+            $selecionadas[]=true;
+          }else{
+            $selecionadas[]=false;
+          }
+        }
+        return view('localidad/localidadModificarForm')->with('localidad',$localidad) ->with('provincias',$provincias)
+        ->with('selecionadas',$selecionadas);
     }
 
     public function modificar(Request $request){
@@ -95,5 +103,11 @@ class LocalidadController extends Controller
         $single=Localidad::findOrFail($id2);
         $single->delete();
         return redirect('/localidad/listar');
+    }
+
+    public function showOne($id, Request $request){
+      $id2=intval($id);
+      $single=Localidad::findOrFail($id2);
+      return view('/localidad/localidadShowOne')->with('single',$single);
     }
 }

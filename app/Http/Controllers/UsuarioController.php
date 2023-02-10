@@ -13,18 +13,8 @@ class UsuarioController extends Controller
     //
 
     public function registrarForm(Request $request){
-        $localidades=DB::table('LOCALIDAD')->orderBy('NOMBRE')->get();
-        $provincias=[];
-        $paises=[];
-        foreach ($localidades as $fila) {
-          // code...
-          $provincia=Provincia::where('id',$fila->ID_PROVINCIA)->firstOrFail();
-          $provincias[]=$provincia->NOMBRE;
-          $pais=Pais::where('id',$provincia['ID_PAIS'])->firstOrFail();
-          $paises[]=$pais->NOMBRE;
-        }
-        return view('usuario/usuarioRegistrarForm')->with('localidades',$localidades)
-        ->with('provincias',$provincias)->with('paises',$paises);
+        $localidades=Localidad::orderBy('NOMBRE')->get();
+        return view('usuario/usuarioRegistrarForm')->with('localidades',$localidades);
     }
 
     public function registrar(Request $request){
@@ -46,35 +36,19 @@ class UsuarioController extends Controller
     public function listar(Request $request){
 
         $todos=Usuario::All();
-        $localidades=[];
-        $provincias=[];
-        $paises=[];
-        foreach ($todos as $fila) {
-          $localidad=Localidad::where('id',$fila['ID_LOCALIDAD'])->firstOrFail();
-          $localidades[]=$localidad->NOMBRE;
-          $provincia=Provincia::where('id',$localidad['ID_PROVINCIA'])->firstOrFail();
-          $provincias[]=$provincia->NOMBRE;
-          $pais=Pais::where('id',$provincia['ID_PAIS'])->firstOrFail();
-          $paises[]=$pais->NOMBRE;
-        }
-        return view('usuario/usuarioListar')->with('todos',$todos)->with('localidades',$localidades)
-        ->with('provincias',$provincias)->with('paises',$paises);
-    }
 
-    public function modificarForm(Request $request){
-        $id=intval($request->id);
-        $usuario=Usuario::findOrFail($id);
-        $localidades=DB::table('LOCALIDAD')->orderBy('NOMBRE')->get();
-        $provincias=[];
-        $paises=[];
+        return view('usuario/usuarioListar')->with('todos',$todos);
+    }
+    public function modificarId($id,Request $request){
+        $id2=intval($id);
+        $usuario=Usuario::findOrFail($id2);
+        $localidades=Localidad::orderBy('NOMBRE')->get();
+
         $selecionadas=[];
 
         foreach ($localidades as $fila) {
           // code..
-          $provincia=Provincia::where('id',$fila->ID_PROVINCIA)->firstOrFail();
-          $provincias[]=$provincia->NOMBRE;
-          $pais=Pais::where('id',$provincia['ID_PAIS'])->firstOrFail();
-          $paises[]=$pais->NOMBRE;
+
           if($usuario->ID_LOCALIDAD==$fila->id){
               $selecionadas[]=true;
           }else{
@@ -83,7 +57,28 @@ class UsuarioController extends Controller
         }
 
         return view('usuario/usuarioModificarForm')->with('usuario',$usuario)->with('localidades',$localidades)
-        ->with('provincias',$provincias)->with('paises',$paises)->with('selecionadas',$selecionadas);
+        ->with('selecionadas',$selecionadas);
+    }
+
+    public function modificarForm(Request $request){
+        $id=intval($request->id);
+        $usuario=Usuario::findOrFail($id);
+        $localidades=Localidad::orderBy('NOMBRE')->get();
+
+        $selecionadas=[];
+
+        foreach ($localidades as $fila) {
+          // code..
+
+          if($usuario->ID_LOCALIDAD==$fila->id){
+              $selecionadas[]=true;
+          }else{
+              $selecionadas[]=false;
+          }
+        }
+
+        return view('usuario/usuarioModificarForm')->with('usuario',$usuario)->with('localidades',$localidades)
+        ->with('selecionadas',$selecionadas);
     }
 
     public function modificar(Request $request){
@@ -105,5 +100,11 @@ class UsuarioController extends Controller
         $autor=Usuario::findOrFail($id2);
         $autor->delete();
         return redirect('/usuario/listar');
+    }
+
+    public function showOne($id, Request $request){
+      $id2=intval($id);
+      $single=Usuario::findOrFail($id2);
+      return view('/usuario/usuarioShowOne')->with('single',$single);
     }
 }

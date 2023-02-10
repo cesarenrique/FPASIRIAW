@@ -32,14 +32,18 @@ Route::get('/multa/listar', [MultaController::class, 'listar' ])->middleware('au
 Route::post('/multa/modificarForm', [MultaController::class, 'modificarForm' ])->middleware('auth')->name('multa.modificarForm');
 Route::post('/multa/modificar', [MultaController::class, 'modificar' ])->middleware('auth')->name('multa.modificar');
 Route::get('/multa/borrar/{id}', [MultaController::class, 'borrar' ])->middleware('auth')->name('multa.borrar');
-
+Route::get('/multa/{id}/modificar', [MultaController::class, 'modificarId' ])->middleware('auth')->name('multa.modificar.id');
+Route::get('/multa/{id}/borrar', [MultaController::class, 'borrar' ])->middleware('auth')->name('multa.borrar.id');
+Route::get('/multa/{id}', [MultaController::class, 'showOne' ])->middleware('auth')->name('multa.showOne');
 
 Route::get('/autor/registrar', [AutorController::class, 'registrarForm' ])->middleware('auth')->name('autor.registrarForm');
 Route::post('/autor/registrar', [AutorController::class, 'registrar' ])->middleware('auth')->name('autor.registrar');
 Route::get('/autor/listar', [AutorController::class, 'listar' ])->middleware('auth')->name('autor.listar');
 Route::post('/autor/modificarForm', [AutorController::class, 'modificarForm' ])->middleware('auth')->name('autor.modificarForm');
 Route::post('/autor/modificar', [AutorController::class, 'modificar' ])->middleware('auth')->name('autor.modificar');
-Route::get('/autor/borrar/{id}', [AutorController::class, 'borrar' ])->middleware('auth')->name('autor.borrar');
+Route::get('/autor/{id}/modificar', [AutorController::class, 'modificarId' ])->middleware('auth')->name('autor.modificar.id');
+Route::get('/autor/{id}/borrar', [AutorController::class, 'borrar' ])->middleware('auth')->name('autor.borrar.id');
+Route::get('/autor/{id}', [AutorController::class, 'showOne' ])->middleware('auth')->name('autor.showOne');
 
 Route::get('/localidad/registrar', [LocalidadController::class, 'registrarForm' ])->middleware('auth')->name('localidad.registrarForm');
 Route::post('/localidad/registrar', [LocalidadController::class, 'registrar' ])->middleware('auth')->name('localidad.registrar');
@@ -47,6 +51,9 @@ Route::get('/localidad/listar', [LocalidadController::class, 'listar' ])->middle
 Route::post('/localidad/modificarForm', [LocalidadController::class, 'modificarForm' ])->middleware('auth')->name('localidad.modificarForm');
 Route::post('/localidad/modificar', [LocalidadController::class, 'modificar' ])->middleware('auth')->name('localidad.modificar');
 Route::get('/localidad/borrar/{id}', [LocalidadController::class, 'borrar' ])->middleware('auth')->name('localidad.borrar');
+Route::get('/localidad/{id}/modificar', [LocalidadController::class, 'modificarId' ])->middleware('auth')->name('localidad.modificar.id');
+Route::get('/localidad/{id}/borrar', [LocalidadController::class, 'borrar' ])->middleware('auth')->name('localidad.borra.idr');
+Route::get('/localidad/{id}', [LocalidadController::class, 'showOne' ])->middleware('auth')->name('localidad.showOne');
 
 Route::get('/usuario/registrar', [UsuarioController::class, 'registrarForm' ])->middleware('auth')->name('usuario.registrarForm');
 Route::post('/usuario/registrar', [UsuarioController::class, 'registrar' ])->middleware('auth')->name('usuario.registrar');
@@ -54,6 +61,9 @@ Route::get('/usuario/listar', [UsuarioController::class, 'listar' ])->middleware
 Route::post('/usuario/modificarForm', [UsuarioController::class, 'modificarForm' ])->middleware('auth')->name('usuario.modificarForm');
 Route::post('/usuario/modificar', [UsuarioController::class, 'modificar' ])->middleware('auth')->name('usuario.modificar');
 Route::get('/usuario/borrar/{id}', [UsuarioController::class, 'borrar' ])->middleware('auth')->name('usuario.borrar');
+Route::get('/usuario/{id}/modificar', [UsuarioController::class, 'modificarId' ])->middleware('auth')->name('usuario.modificar.id');
+Route::get('/usuario/{id}/borrar', [UsuarioController::class, 'borrar' ])->middleware('auth')->name('usuario.borrar.id');
+Route::get('/usuario/{id}', [UsuarioController::class, 'showOne' ])->middleware('auth')->name('usuario.showOne');
 
 
 Route::get('/editorial', [EditorialController::class,'listaeditorial'])

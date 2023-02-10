@@ -1,8 +1,8 @@
 <x-layout bodyClass="g-sidenav-show  bg-gray-200">
-        <x-navbars.sidebar activePage="tables"></x-navbars.sidebar>
+        <x-navbars.sidebar activePage="tables-localidad"></x-navbars.sidebar>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
             <!-- Navbar -->
-            <x-navbars.navs.auth titlePage="Tables"></x-navbars.navs.auth>
+            <x-navbars.navs.auth titlePage="Localidad Tables"></x-navbars.navs.auth>
             <!-- End Navbar -->
             <div class="container-fluid py-4">
                 <div class="row">
@@ -10,7 +10,7 @@
                         <div class="card my-4">
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                    <h6 class="text-white text-capitalize ps-3">Autor table</h6>
+                                      <h6 class="w-25 float-left text-white text-capitalize ps-3">Localidad table  <a href="{{ route('localidad.registrarForm') }}" class="text-white bg-dark py-3 px-3 mx-4 "><i class="fa fa-plus fa-2x px-2 align-middle" aria-hidden="true"></i>Registrar</a></h6>
                                 </div>
                             </div>
                             <div class="card-body px-0 pb-2">
@@ -19,10 +19,10 @@
                                         <thead>
                                             <tr>
                                                 <th
-                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     ID</th>
                                                 <th
-                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Nombre</th>
                                                 <th
                                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -31,7 +31,7 @@
                                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Habitantes</th>
                                                 ç<th
-                                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Provincias</th>
                                                 <th
                                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -53,37 +53,54 @@
                                             <tr>
 
                                                 <td class="align-middle">
-                                                <p class="text-lg font-weight-bold "><?php echo $fila['id'] ?></p>
-
+                                                  <div class="d-flex flex-column justify-content-center">
+                                                      <h6 class="mb-0 text-sm"><?php echo $fila['id'] ?></h6>
+                                                  </div>
                                                 </td>
-                                                <td>
-                                                  <p class="text-lg font-weight-bold mb-0"><?php echo $fila['NOMBRE'] ?></p>
-                                                </td>
-                                                <td class="align-middle text-center ">
-                                                  <p class="text-lg font-weight-bold mb-0"><?php echo $fila['CP'] ?></p>
-                                                </td>
-                                                <td>
-                                                  <p class="text-lg font-weight-bold mb-0"><?php echo $fila['N_HABITANTE'] ?></p>
+                                                <td class="align-middle text-center">
+                                                  <div class="d-flex flex-column justify-content-center">
+                                                      <h6 class="mb-0 text-sm"><?php echo strlen($fila['NOMBRE'])>20 ? substr($fila['NOMBRE'],0,20)."...": $fila['NOMBRE'] ?></h6>
+                                                  </div>
                                                 </td>
                                                 <td class="align-middle text-center ">
-                                                  <p class="text-lg font-weight-bold mb-0"><?php echo $provincias[$i] ?></p>
+                                                  <div class="d-flex flex-column justify-content-center">
+                                                      <h6 class="mb-0 text-sm"><?php echo $fila['CP'] ?></h6>
+                                                  </div>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                  <div class="d-flex flex-column justify-content-center">
+                                                      <h6 class="mb-0 text-sm"><?php echo $fila['N_HABITANTE'] ?></h6>
+                                                  </div>
                                                 </td>
                                                 <td class="align-middle text-center ">
-                                                  <p class="text-lg font-weight-bold mb-0"><?php echo $paises[$i] ?></p>
+                                                  <div class="d-flex flex-column justify-content-center">
+                                                      <h6 class="mb-0 text-sm"><?php echo $fila->provincia->NOMBRE ?></h6>
+                                                  </div>
+                                                </td>
+                                                <td class="align-middle text-center ">
+                                                  <div class="d-flex flex-column justify-content-center">
+                                                      <h6 class="mb-0 text-sm"><?php echo $fila->provincia->pais->NOMBRE  ?></h6>
+                                                  </div>
                                                 </td>
 
                                                 <td class="align-middle text-center">
                                                   <?php
-                                                  echo "<form id='formulario{$fila['id']}' action='". url('/localidad/modificarForm')."' method='post'>
-                                                    <input type='hidden' name='_token' value='". csrf_token()."'>
-                                                    <input type='hidden' name='id' value='{$fila['id']}' />
-                                                    <button ><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button>
-                                                  </form>";
-                                                  ?>
+                                                    $url=url("/localidad/");
+                                                    $id=$fila['id'];
+                                                    echo "<a href='{$url}/{$id}' ><i class='fa fa-eye fa-2' aria-hidden='true'></i></i></a>";
+                                                   ?>
                                                 </td>
                                                 <td class="align-middle text-center">
                                                   <?php
-                                                    echo "<span onclick='eliminar({$fila['id']})' ><i class='fa fa-trash-o' aria-hidden='true'></i></span>";
+                                                    $url=url("/localidad/");
+                                                    $id=$fila['id'];
+                                                    echo "<a href='{$url}/{$id}/modificar' ><i class='fa fa-pencil-square-o fa-2'  aria-hidden='true'></i></i></a>";
+                                                   ?>
+                                                </td>
+
+                                                <td class="align-middle text-center">
+                                                  <?php
+                                                    echo "<a href='#' onclick='eliminar({$fila['id']})' ><i class='fa fa-trash-o' aria-hidden='true'></i></a>";
                                                    ?>
                                                 </td>
                                             </tr>
@@ -105,7 +122,7 @@
                     	var msg = confirm("Seguro que desea eliminar el autor");
 
                 		if (msg) {
-                			window.location = "<?php echo url('/localidad/borrar')?>/"+id;
+                			window.location = "<?php echo url('/localidad/')?>/"+id+"/borrar";
                 		}
                   }
                 </script>
