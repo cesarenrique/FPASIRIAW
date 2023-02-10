@@ -9,7 +9,7 @@ use App\Models\Pais;
 class Provincia extends Model
 {
     use HasFactory;
-    protected $table = 'PROVINCIA';
+    protected $table = 'provincia';
     protected $fillable = ['id','NOMBRE','ID_PAIS'];
     public $timestamps = false;
 

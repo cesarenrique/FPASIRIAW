@@ -9,12 +9,12 @@ class Autor extends Model
 {
     use HasFactory;
 
-    protected $table = 'AUTOR';
+    protected $table = 'autor';
     protected $fillable = ['id','NOMBRE','APELLIDO'];
     public $timestamps = false;
 
     public function articulos()
     {
-       return $this->belongsToMany('App\Models\Articulo','CREAR','ID_AUTOR','ID_ARTICULO'); // autor_id ariiculo_id
+       return $this->belongsToMany('App\Models\Articulo','crear','ID_AUTOR','ID_ARTICULO'); // autor_id ariiculo_id
     }
 }

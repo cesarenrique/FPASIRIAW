@@ -9,7 +9,7 @@ class Editorial extends Model
 {
     use HasFactory;
 
-    protected $table = 'EDITORIAL';
+    protected $table = 'editorial';
     protected $fillable = ['id','NOMBRE','TELEFONO','DIRECCION'];
     public $timestamps = false;
 

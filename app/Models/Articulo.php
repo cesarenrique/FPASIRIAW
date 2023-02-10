@@ -9,11 +9,11 @@ class Articulo extends Model
 {
     use HasFactory;
      //Especifico que tabla de la BBDD es la que consultará este modelo
-     protected $table ="ARTICULO";
+     protected $table ="articulo";
      protected $fillable=['ISBN','DESCRIPCION','NOMBRE','IDIOMA','ID_TIPO','ID_EDITORIAL'];
      public $timestamps = false;
      public function autores(){
-        return $this->belongsToMany('App\Models\Autor','CREAR','ID_ARTICULO','ID_AUTOR'); // autor_id ariiculo_id
+        return $this->belongsToMany('App\Models\Autor','crear','ID_ARTICULO','ID_AUTOR'); // autor_id ariiculo_id
      }
 
      public function editorial(){
@@ -28,5 +28,5 @@ class Articulo extends Model
        return $this->hasMany('App\Models\Ejemplar','ID_ARTICULO');
      }
 
-     
+
 }
