@@ -41,7 +41,7 @@ class LocalidadController extends Controller
     public function listar(Request $request){
 
         $todos=Localidad::All();
-        return view('localidad/Localidadlistar')->with('todos',$todos);
+        return view('localidad/localidadlistar')->with('todos',$todos);
     }
 
     public function modificarId($id,Request $request){
